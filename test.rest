@@ -5,7 +5,7 @@ POST  http://127.0.0.1:8000/
 Content-Type: application/json
 
 {
-    "question": "phòng công tác sinh viên ở đâu"
+    "question": "nộp bài ở assignment trễ thì bị gì"
 }
 #######################
 GET https://chatbot-capstone1.herokuapp.com/train

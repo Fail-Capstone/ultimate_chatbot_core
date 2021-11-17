@@ -916,7 +916,6 @@ như_quả
 như_sau
 như_thường
 như_thế
-như_thế_nào
 như_thể
 như_trên
 như_trước
