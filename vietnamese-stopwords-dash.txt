@@ -1482,7 +1482,6 @@ tôi_con
 tông_tốc
 tù_tì
 tăm_tắp
-tăng
 tăng_chúng
 tăng_cấp
 tăng_giảm
