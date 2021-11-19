@@ -21,8 +21,8 @@ def get_answer(question):
     confused_answer = get_fallback_intent()[math.trunc(random.random()*len(get_fallback_intent()))]
     logistic_predict_str = logistic_predict.tolist()[0]
     try:
-        if (maxPredictProb < 0.5):
-            if(maxPredictProb > 0.1):
+        if (maxPredictProb < 0.8):
+            if(maxPredictProb > 0.2):
                 if(logistic_predict == svm_predict):
                     threading.Thread(target=insert_lowProb_question, args=[question,maxPredictProb, logistic_predict_str]).start()        
                 else:
