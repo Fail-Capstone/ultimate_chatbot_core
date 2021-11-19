@@ -1,7 +1,15 @@
-# from db_connect import get_collection
-# import json
+from pymongo import collection
+from db_connect import get_collection
+import json
 
-# with open('data.json', encoding='utf8') as file:
-#     data = json.loads(file.read())
-# intents = get_collection('intents')
-# intents.insert_many(data)
+with open('data.json', encoding='utf8') as file:
+    data = json.loads(file.read())
+collection = get_collection('intents')
+collection.insert_many(data)
+
+# patterns = []
+# for intent in data:
+#     for pattern in intent['patterns']:
+#         patterns.append(pattern)
+
+# print(len(patterns))

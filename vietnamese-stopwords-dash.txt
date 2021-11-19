@@ -571,7 +571,6 @@ hỏi_lại
 hỏi_xem
 hỏi_xin
 hỗ_trợ
-khi
 khi_khác
 khi_không
 khi_nào
@@ -1175,7 +1174,6 @@ rằng
 rằng_là
 rốt_cuộc
 rốt_cục
-rồi
 rồi_nữa
 rồi_ra
 rồi_sao
@@ -1196,7 +1194,6 @@ sao_bằng
 sao_cho
 sao_vậy
 sao_đang
-sau
 sau_chót
 sau_cuối
 sau_cùng
