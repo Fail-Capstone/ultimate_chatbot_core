@@ -653,7 +653,6 @@ làm_gì
 làm_lòng
 làm_lại
 làm_lấy
-làm_mất
 làm_ngay
 làm_như
 làm_nên
@@ -761,7 +760,6 @@ mà_lại
 mà_thôi
 mà_vẫn
 mạnh
-mất
 mất_còn
 mọi
 mọi_giờ

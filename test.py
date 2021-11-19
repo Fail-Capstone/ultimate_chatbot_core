@@ -6,6 +6,8 @@ with open('data.json', encoding='utf8') as file:
     data = json.loads(file.read())
 collection = get_collection('intents')
 collection.insert_many(data)
+# data = get_collection('intents').find()
+
 
 # patterns = []
 # for intent in data:
@@ -13,3 +15,4 @@ collection.insert_many(data)
 #         patterns.append(pattern)
 
 # print(len(patterns))
+# print(len(data))
