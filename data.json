@@ -1,106 +1,30 @@
 [
   {
-    "name": "Nộp học phí sau thi",
-    "tag": "nop_hoc_phi_sau_thi",
+    "name": "Địa chỉ các khoa",
+    "tag": "dia_chi_khoa",
     "patterns": [
-      "nộp học phí sau khi thi",
-      "thi rồi mới nộp học phí",
-      "đóng học phí sau khi thi",
-      "thi xong mới nộp học phí",
-      "thi xong mới đóng học phí",
-      "thi rồi mới nộp tiền học",
-      "thi xong rồi mới nộp tiền học",
-      "nộp tiền học sau khi thi xong",
-      "thi rồi mới nộp tiền học",
-      "thi rồi mới đóng học phí"
+      "địa chỉ khoa kế toán",
+      "đại chỉ khoa du lịch",
+      "địa chỉ khoa đào tạo quốc tế",
+      "địa chỉ khoa du học tại chỗ",
+      "địa chỉ khoa",
+      "cách liên lạc của khoa",
+      "số điện thoại của khoa",
+      "văn phòng khoa ở chỗ nào",
+      "cách liên lạc khoa kế toán",
+      "cách liên lạc khoa du lịch",
+      "cách liên lạc khoa đào tạo quốc tế",
+      "địa chỉ khoa đtqt",
+      "số điện thoại khoa đtqt",
+      "sdth của khoa",
+      "sdt của khoa",
+      "sđt của khoa",
+      "khoa ở đâu",
+      "khoa kế toán ở đâu",
+      "khoa du lịch ở đâu",
+      "khoa công nghệ thông tin ở đâu",
+      "khoa cntt ở chỗ nào"
     ],
-    "response": "Bạn phải đóng tiền học phí trước thì kết quả thi mới được công nhận. Nếu như bạn đang gặp khó khăn, bạn có thể đóng trước một phần học phí và hoant hành học phí sau khi thi"
-  },
-  {
-    "name": "Bắt buộc đánh giá rèn luyện",
-    "tag": "bat_buoc_danh_gia_ren_luyen",
-    "patterns": [
-      "Có bắt buộc làm đánh giá rèn luyện không",
-      "có cần làm đánh giá rèn luyện không",
-      "không làm đánh giá rèn luyện được không",
-      "đánh giá rèn luyện",
-      "không nộp đánh giá rèn luyện thì có sao không",
-      "không đánh giá rèn luyện thì sao",
-      "quên làm đánh giá rèn luyện thì sao"
-    ],
-    "response": "Đánh giá rèn luyện là bắt buộc phải làm. Nếu như không làm thì sẽ ảnh hưởng đến bạn rất nhiều."
-  },
-  {
-    "name": "Mất thẻ sinh viên",
-    "tag": "mat_the_sinh_vien",
-    "patterns": [
-      "mất thẻ sinh viên thì làm sao",
-      "cách làm lại thẻ sinh viên",
-      "mất thẻ sinh viên thì bị gì",
-      "muốn làm lại thẻ sinh viên thì làm kiểu gì",
-      "tạo thẻ sinh viên mới do làm mất",
-      "làm lại thẻ sinh viên do bị mất",
-      "làm lại thẻ sinh viên ở đâu",
-      "làm rơi thẻ sinh viên",
-      "quên thẻ sinh viên ở đâu không nhớ",
-      "tiền làm lại thẻ sinh viên",
-      "phí làm lại thẻ sinh viên",
-      "chi phí làm lại thẻ sinh viên",
-      "có mất tiến khi làm lại thẻ sinh viên không",
-      "làm lại thẻ sinh viên có tốn tiền không"
-    ],
-    "response": "Bạn vui lòng lên trung tâm CSE để làm lại thẻ. Làm lại thẻ sẽ tốn 50 ngàn nên bạn hãy chuẩn bị phí nhá."
-  },
-  {
-    "name": "Bắt buộc đeo thẻ sinh viên",
-    "tag": "bat_buoc_deo_the_sinh_vien",
-    "patterns": [
-      "có bắt buộc đeo thẻ sinh viên không",
-      "có cần phải đéo thẻ sinh viên không",
-      "sinh viên có cần đeo thẻ khi ở trong trường không",
-      "có cần đeo thẻ sinh viên khi học ở trường không",
-      "bắt buộc đeo thẻ sinh viên khi ở trong khuôn viên trường",
-      "trường có bắt buộc đeo thẻ sinh viên không",
-      "trong khuôn viên trường có cần phải đéo thẻ sinh viên không",
-      "tới trường có cần đeo thẻ sinh viên không",
-      "đeo thẻ sinh viên khi ở trường",
-      "đeo thẻ khi ở trong khuôn viên trường",
-      "có cần phải đeo thr sinh viên khi đi học không",
-      "đi học có cần mang thẻ sinh viên không",
-      "học trên trường có cần đeo thẻ sinh viên không",
-      "có nên mang thẻ sinh viên khi đi học không"
-    ],
-    "response": "Có bạn nhé. Vì quy định của trường bắt buộc phải đeo thẻ sinh viên khi ở trong khuôn viên trường."
-  },
-  {
-    "name": "Submit bị mất bài",
-    "tag": "submit_mat_bai",
-    "patterns": [
-      "bấm submit thì bị mất bài",
-      "submit bài thì bị mất",
-      "bấm submit bài thì trắng bài",
-      "submit thì trắng bài",
-      "nộp bài bị lỗi mất bài",
-      "nộp bài thì bị lỗi trắng bài",
-      "bấm nộp bài thì lỗi mất bài"
-    ],
-    "response": "Trong trường hợp này bạn chỉ còn cách là báo ngay với giảng viên và vào làm lại nếu còn thời gian. Để tránh trường hợp này xảy ra, bạn nên chụp màn hình sau mỗi câu bạn đã làm. Ảnh chụp màn hình sẽ là công cụ để thầy cô chấm điểm cho bạn khi xảy ra lỗi."
-  },
-  {
-    "name": "Chụp màn hình",
-    "tag": "chup_man_hinh",
-    "patterns": [
-      "cách chụp màn hình",
-      "làm sao để chụp màn hình",
-      "các công cụ chụp màn hình",
-      "tool chụp màn hình",
-      "chụp màn hình như thế nào",
-      "chụp màn hình kiểu gì",
-      "công cụ để scren shot",
-      "cách để scren shot",
-      "scren shot kiểu gì",
-      "làm sao để scren shot"
-    ],
-    "response": "Bạn có thể vào cửa hàng trình duyệt và tải phần mềm GoFullPage để chụp màn hình một cách tự động và nhanh nhất."
+    "response": "Bạn có thể search ở trên Google với cứ pháp: \"Tên khoa + duy tân\". Bạn có thể thấy được trang web của khoa ở ngay trên đầu kết quả tìm kiếm."
   }
 ]

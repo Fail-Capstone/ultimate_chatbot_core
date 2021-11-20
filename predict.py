@@ -22,7 +22,7 @@ def get_answer(question):
     logistic_predict_str = logistic_predict.tolist()[0]
     try:
         if (maxPredictProb < 0.8):
-            if(maxPredictProb > 0.2):
+            if(maxPredictProb > 0.1):
                 if(logistic_predict == svm_predict):
                     threading.Thread(target=insert_lowProb_question, args=[question,maxPredictProb, logistic_predict_str]).start()        
                 else:

@@ -5,7 +5,7 @@ POST  http://127.0.0.1:8000/
 Content-Type: application/json
 
 {
-    "question": "không muốn đi thi"
+    "question": "mất bài khi bấm save"
 }
 #######################
 GET https://chatbot-capstone1.herokuapp.com/train
