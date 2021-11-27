@@ -2,26 +2,26 @@ from os import error
 from sklearn.pipeline import Pipeline
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
+from sklearn.naive_bayes import MultinomialNB, BernoulliNB
+from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.metrics import classification_report
 from sklearn.svm import SVC
 from data import get_data_server
 import pandas as pd
 import pickle
+from sklearn.feature_extraction.text import TfidfVectorizer
 
-# class NaiveBayes_Model(object):
-#     def __init__(self):
-#         self.clf = self._init_pipeline()
+class MultinomialNB_Model(object):
+    def __init__(self):
+        self.clf = self._init_pipeline()
 
-#     @staticmethod
-#     def _init_pipeline():
-#         pipe_line = Pipeline([
-#             # ("transformer", FeatureTransformer()),#sử dụng pyvi tiến hành word segmentation
-#             ("vect", CountVectorizer(ngram_range=(1,1),
-#                                              max_df=0.8,
-#                                              max_features=None)),#bag-of-words
-#             ("tfidf", TfidfTransformer()),#tf-idf
-#             ("clf", MultinomialNB())#model naive bayes
-#         ])
-#         return pipe_line
+    @staticmethod
+    def _init_pipeline():
+        pipe_line = Pipeline([
+            ("vect", TfidfVectorizer(analyzer='word', ngram_range=(1,2))),
+            ("clf", BernoulliNB())
+        ])
+        return pipe_line
 
 class LogisticRegression_Model(object):
     def __init__(self):
@@ -31,7 +31,7 @@ class LogisticRegression_Model(object):
     def _init_pipeline():
         pipe_line = Pipeline([
             ("vect", TfidfVectorizer(analyzer='word', ngram_range=(1,2))),
-            ("clf", LogisticRegression(C=212.10, max_iter=10000, solver='lbfgs', multi_class='multinomial'))
+            ("clf", LogisticRegression(C=212.10, max_iter=10000, solver='lbfgs', multi_class='auto'))
         ])
         return pipe_line
 

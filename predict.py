@@ -8,6 +8,7 @@ from text_preprocess import text_preprocess
 from data import get_fallback_intent
 from db_connect import get_collection
 
+
 logistic_model = pickle.load(open('logistic_model.pkl', 'rb'))
 svm_model = pickle.load(open('svm_model.pkl', 'rb'))
 answer = pickle.load(open('answer.pkl', 'rb'))
@@ -31,9 +32,9 @@ def get_answer(question):
         else:
             s = data_answer.loc[data_answer['tag'] == " ".join(logistic_predict), 'response']
             if(isinstance(s.iat[0], list)):
-                return {"mess": s.iat[0][math.trunc(random.random()*len(s.iat[0]))]}
+                return {"mess": s.iat[0][math.trunc(random.random()*len(s.iat[0]))], "tag": logistic_predict_str}
             else:
-                return {"mess": s.iat[0]}
+                return {"mess": s.iat[0], "tag": logistic_predict_str}
     except ValueError:
         print(ValueError)
     
@@ -46,3 +47,8 @@ def insert_lowProb_question(question, maxPredictProb, tag_predict):
     else:
         question_collection.insert_one({"tag": tag_predict, "question": question, "prob": maxPredictProb})
 
+question = input("Câu hỏi:")
+answer = get_answer(question)
+print(answer)
+# print("Intent" + answer.tag)
+# print("Câu trả lời" + answer.mess)
