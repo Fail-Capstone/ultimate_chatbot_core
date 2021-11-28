@@ -2,26 +2,11 @@ from os import error
 from sklearn.pipeline import Pipeline
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
-from sklearn.naive_bayes import MultinomialNB, BernoulliNB
-from sklearn.model_selection import train_test_split, GridSearchCV
-from sklearn.metrics import classification_report
 from sklearn.svm import SVC
 from data import get_data_server
 import pandas as pd
 import pickle
 from sklearn.feature_extraction.text import TfidfVectorizer
-
-class MultinomialNB_Model(object):
-    def __init__(self):
-        self.clf = self._init_pipeline()
-
-    @staticmethod
-    def _init_pipeline():
-        pipe_line = Pipeline([
-            ("vect", TfidfVectorizer(analyzer='word', ngram_range=(1,2))),
-            ("clf", BernoulliNB())
-        ])
-        return pipe_line
 
 class LogisticRegression_Model(object):
     def __init__(self):

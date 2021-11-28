@@ -1491,7 +1491,6 @@ tại_vì
 tại_đâu
 tại_đây
 tại_đó
-tạo
 tạo_cơ_hội
 tạo_nên
 tạo_ra
