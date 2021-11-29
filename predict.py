@@ -47,8 +47,8 @@ def insert_lowProb_question(question, maxPredictProb, tag_predict):
     else:
         question_collection.insert_one({"tag": tag_predict, "question": question, "prob": maxPredictProb})
 
-question = input("Câu hỏi:")
-answer = get_answer(question)
-print(answer)
+# question = input("Câu hỏi:")
+# answer = get_answer(question)
+# print(answer)
 # print("Intent" + answer.tag)
 # print("Câu trả lời" + answer.mess)

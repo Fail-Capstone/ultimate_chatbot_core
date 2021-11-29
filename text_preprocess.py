@@ -173,5 +173,3 @@ def text_preprocess(document):
     # xóa khoảng trắng thừa
     document = re.sub(r'\s+', ' ', document).strip()
     return document
-
-print(text_preprocess("cách đăng ký tài khoản zoom bằng mail trường"))
