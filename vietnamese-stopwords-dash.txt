@@ -987,7 +987,6 @@ nên_người
 nên_tránh
 nó
 nóc
-nói
 nói_bông
 nói_chung
 nói_khó
