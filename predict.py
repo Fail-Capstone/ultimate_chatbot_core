@@ -5,7 +5,6 @@ import random
 import math
 import pickle
 from text_preprocess import text_preprocess
-from data import get_fallback_intent
 from db_connect import get_collection
 
 
@@ -19,7 +18,7 @@ def get_answer(question):
     logistic_predict = logistic_model.predict(df_question["Question"])
     svm_predict = svm_model.predict(df_question["Question"])
     maxPredictProb = (np.ndarray.max(logistic_model.predict_proba(df_question["Question"])))
-    confused_answer = get_fallback_intent()[math.trunc(random.random()*len(get_fallback_intent()))]
+    confused_answer = data_answer.loc[data_answer["tag"] == "boi_roi", 'response']
     logistic_predict_str = logistic_predict.tolist()[0]
     try:
         if (maxPredictProb < 0.8):
@@ -28,7 +27,7 @@ def get_answer(question):
                     threading.Thread(target=insert_lowProb_question, args=[question,maxPredictProb, logistic_predict_str]).start()        
                 else:
                     threading.Thread(target=insert_lowProb_question, args=[question,maxPredictProb, ""]).start()
-            return {"mess": confused_answer}
+            return {"mess": confused_answer.iat[0][math.trunc(random.random()*len(confused_answer.iat[0]))]}
         else:
             s = data_answer.loc[data_answer['tag'] == " ".join(logistic_predict), 'response']
             if(isinstance(s.iat[0], list)):
@@ -47,8 +46,3 @@ def insert_lowProb_question(question, maxPredictProb, tag_predict):
     else:
         question_collection.insert_one({"tag": tag_predict, "question": question, "prob": maxPredictProb})
 
-# question = input("Câu hỏi:")
-# answer = get_answer(question)
-# print(answer)
-# print("Intent" + answer.tag)
-# print("Câu trả lời" + answer.mess)
