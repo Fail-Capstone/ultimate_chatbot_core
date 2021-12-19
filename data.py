@@ -18,9 +18,3 @@ def get_data_server():
     except error:
         print(error)
 
-def get_fallback_intent():
-    fallback_intent = ["Xin lỗi! Mình không hiểu ý của bạn, hãy nêu câu hỏi đầy đủ hơn.",
-                       "Vui lòng mô tả đầy đủ thông tin, để mình có thể tìm câu trả lời phù hợp nhất!",
-                       "Mình vẫn chưa hiểu được câu hỏi của bạn, vui lòng mô tả đầy đủ hơn nhé!",
-                       "Mình chưa hiểu câu hỏi này, có thể mô tả đầy đủ thông tin hoặc mình sẽ gửi câu hỏi này đến Phòng CSE để hỗ trợ bạn!"]
-    return fallback_intent
