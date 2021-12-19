@@ -1,11 +1,11 @@
 GET  http://127.0.0.1:8000/train
 Content-Type: application/json
 ################################
-POST  http://127.0.0.1:8000/
+POST  https://ultimate-chatbot.tk:8080/
 Content-Type: application/json
 
 {
-    "question": "quên mật khẩu mydtu"
+    "question": "quên đóng học phí"
 }
 #######################
 GET https://chatbot-capstone1.herokuapp.com/train
