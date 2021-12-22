@@ -1,4 +1,5 @@
 import threading
+from types import prepare_class
 import numpy as np
 import pandas as pd
 import random
@@ -17,32 +18,47 @@ def get_answer(question):
     df_question = pd.DataFrame([{"Question": (text_preprocess(question))}])
     logistic_predict = logistic_model.predict(df_question["Question"])
     svm_predict = svm_model.predict(df_question["Question"])
-    maxPredictProb = (np.ndarray.max(logistic_model.predict_proba(df_question["Question"])))
+    maxLogisticPredictProb = (np.ndarray.max(logistic_model.predict_proba(df_question["Question"])))
+    maxSVMPrdictProb = (np.ndarray.max(svm_model.predict_proba(df_question["Question"])))
+    avgPredictProb = (maxLogisticPredictProb + maxSVMPrdictProb) % 2
     confused_answer = data_answer.loc[data_answer["tag"] == "boi_roi", 'response']
     logistic_predict_str = logistic_predict.tolist()[0]
     try:
-        if (maxPredictProb < 0.8):
-            if(maxPredictProb > 0.1):
-                if(logistic_predict == svm_predict):
-                    threading.Thread(target=insert_lowProb_question, args=[question,maxPredictProb, logistic_predict_str]).start()        
-                else:
-                    threading.Thread(target=insert_lowProb_question, args=[question,maxPredictProb, ""]).start()
+        if(logistic_predict[0] == "vo_nghia"):
             return {"mess": confused_answer.iat[0][math.trunc(random.random()*len(confused_answer.iat[0]))]}
-        else:
+    #     elif(maxLogisticPredictProb > 0.8 or (maxLogisticPredictProb > 0.7 and logistic_predict[0] == svm_predict[0])):
+    #         s = data_answer.loc[data_answer['tag'] == " ".join(logistic_predict), 'response']
+    #         if(isinstance(s.iat[0], list)):
+    #             return {"mess": s.iat[0][math.trunc(random.random()*len(s.iat[0]))], "tag": logistic_predict_str}
+    #         else:
+    #             return {"mess": s.iat[0], "tag": logistic_predict_str}
+    #     elif(maxLogisticPredictProb > 0.1):
+    #             if(logistic_predict == svm_predict):
+    #                 threading.Thread(target=insert_lowProb_question, args=[question,maxLogisticPredictProb, logistic_predict_str]).start()        
+    #             else:
+    #                 threading.Thread(target=insert_lowProb_question, args=[question,maxLogisticPredictProb, ""]).start()
+    #     return {"mess": confused_answer.iat[0][math.trunc(random.random()*len(confused_answer.iat[0]))]}
+    # except ValueError:
+        elif(avgPredictProb > 0.7 and logistic_predict[0] == svm_predict[0]):
             s = data_answer.loc[data_answer['tag'] == " ".join(logistic_predict), 'response']
             if(isinstance(s.iat[0], list)):
                 return {"mess": s.iat[0][math.trunc(random.random()*len(s.iat[0]))], "tag": logistic_predict_str}
             else:
                 return {"mess": s.iat[0], "tag": logistic_predict_str}
+        elif(avgPredictProb < 0.1):
+            if(logistic_predict == svm_predict):
+                threading.Thread(target=insert_lowProb_question, args=[question,maxLogisticPredictProb, logistic_predict_str]).start()        
+            else:
+                threading.Thread(target=insert_lowProb_question, args=[question,maxLogisticPredictProb, ""]).start()
+        return {"mess": confused_answer.iat[0][math.trunc(random.random()*len(confused_answer.iat[0]))]}
     except ValueError:
         print(ValueError)
     
-def insert_lowProb_question(question, maxPredictProb, tag_predict):
+def insert_lowProb_question(question, maxLogisticPredictProb, tag_predict):
     question_collection = get_collection('questions')
     existed_question = question_collection.find_one({"question": question})
-    print(existed_question)
     if(existed_question):
         return
     else:
-        question_collection.insert_one({"tag": tag_predict, "question": question, "prob": maxPredictProb})
+        question_collection.insert_one({"tag": tag_predict, "question": question, "prob": maxLogisticPredictProb})
 

@@ -16,7 +16,7 @@ class LogisticRegression_Model(object):
     def _init_pipeline():
         pipe_line = Pipeline([
             ("vect", TfidfVectorizer(analyzer='word', ngram_range=(1,2))),
-            ("clf", LogisticRegression(C=212.10, max_iter=10000, solver='lbfgs', multi_class='auto'))
+            ("clf", LogisticRegression(C=100, max_iter=10000, solver='lbfgs', multi_class='auto'))
         ])
         return pipe_line
 
