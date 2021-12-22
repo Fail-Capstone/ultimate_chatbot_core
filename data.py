@@ -18,4 +18,3 @@ def get_data_server():
     except error:
         print(error)
 
-
