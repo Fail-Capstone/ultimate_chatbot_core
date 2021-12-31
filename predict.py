@@ -62,4 +62,3 @@ def insert_lowProb_question(question, maxLogisticPredictProb, tag_predict):
         return
     else:
         question_collection.insert_one({"tag": tag_predict, "question": question, "prob": maxLogisticPredictProb})
-
