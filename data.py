@@ -17,4 +17,3 @@ def get_data_server():
         return data_train
     except error:
         print(error)
-

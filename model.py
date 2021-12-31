@@ -1,3 +1,4 @@
+import os
 from os import error
 from sklearn.pipeline import Pipeline
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -16,7 +17,7 @@ class LogisticRegression_Model(object):
     def _init_pipeline():
         pipe_line = Pipeline([
             ("vect", TfidfVectorizer(analyzer='word', ngram_range=(1,2))),
-            ("clf", LogisticRegression(C=100, max_iter=10000, solver='lbfgs', multi_class='auto'))
+            ("clf", LogisticRegression(C=212.10, max_iter=10000, solver='lbfgs', multi_class='auto'))
         ])
         return pipe_line
 
@@ -41,9 +42,14 @@ def train():
         svm_model = SVM_Model()
         svm_clf = svm_model.clf.fit(df_train["Question"], df_train.Intent)
         pickle.dump(svm_clf, open("svm_model.pkl", "wb"))
-        return {"mess": "Train model thành công"}
+        os.system("pkill gunicorn")
+        os.system("cd ~/chatbotapp")
+        os.system("source chatbotenv/bin/activate")
+        os.system("gunicorn --bind 0.0.0.0:8080 wsgi:app --daemon")
+        os.system("Train model ok")
+        return {"mess": "Train model thành công", "success":"true"}
     except error:
-        return {"mess": "Lỗi khi train model"}
+        return {"mess": "Lỗi khi train model", "success":"false"}
 
 if __name__ == "__main__":
     train()
