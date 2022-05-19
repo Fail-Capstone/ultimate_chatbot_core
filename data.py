@@ -17,3 +17,21 @@ def get_data_server():
         return data_train
     except error:
         print(error)
+
+
+def get_answer():
+    try:
+        intents = get_collection('intents').find()
+        data_train = []
+    
+        for intent in intents:
+            if(isinstance(intent['response'], str)):
+                response = text_preprocess(intent['response'])
+                data_train.append({"Response": response, "Intent": intent['tag']})
+            else:
+                for response in intent['response']:
+                    response = text_preprocess(response)
+                    data_train.append({"Response": response, "Intent": intent['tag']})
+        return data_train
+    except error:
+        print(error)
