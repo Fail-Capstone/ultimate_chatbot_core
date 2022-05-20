@@ -30,19 +30,22 @@ def remove_unmeaning(sentence):
     predict_prob = (np.ndarray.max(logistic_answer_model.predict_proba(df_sentence["Sentence"])))
     return predict_prob
 
-def preprocess_sentence (sentences):
+def preprocess_sentence (user, expert):
   sentence_preprocessed = []
-  sentence_question = []
-  for sentence in sentences:
+  for sentence in expert:
     sentenceTemp = text_preprocess(sentence)
     prob = remove_unmeaning(sentenceTemp)
     if(prob > 0.1):
         sentence_preprocessed.append(sentenceTemp)
-        sentence_question.append(sentence)
   sentence_predict = ', '.join(sentence_preprocessed)
-  sententce_final = ', '.join(sentence_question)
+  sententce_final = ', '.join(user)
   finall_result = predict_question(sentence_predict)
   print(predict_question(sentence_predict))
   insert_lowProb_question(sententce_final, finall_result[1], finall_result[0])
 
-preprocess_sentence(["asdasdasd", "asddwasdawd", "đổi thiết bị khác"])
+def main():
+    fake_data = [{"user": ['quên mật khẩu, mất mật khẩu', 'không nhớ mật khẩu'], 'expert': ['lên phòng cse tầng 7 Quang Trung', 'cầm theo thẻ sinh viên', 'nhập mail cá nhân ở myDtu']}, {"expert": ["mình không hiểu bạn nói gì", "ádasdasd"], "user": ["asdasdasdasdasd", "ádasdasdasd"]}]
+    for data in fake_data:
+        preprocess_sentence(data['user'], data['expert'])
+
+main()
