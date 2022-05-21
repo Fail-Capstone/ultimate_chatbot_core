@@ -43,9 +43,9 @@ def preprocess_sentence (user, expert):
   print(predict_question(sentence_predict))
   insert_lowProb_question(sententce_final, finall_result[1], finall_result[0])
 
-def main():
+def conversration_predict(data):
     fake_data = [{"user": ['quên mật khẩu, mất mật khẩu', 'không nhớ mật khẩu'], 'expert': ['lên phòng cse tầng 7 Quang Trung', 'cầm theo thẻ sinh viên', 'nhập mail cá nhân ở myDtu']}, {"expert": ["mình không hiểu bạn nói gì", "ádasdasd"], "user": ["asdasdasdasdasd", "ádasdasdasd"]}]
-    for data in fake_data:
+    for data in data:
         preprocess_sentence(data['user'], data['expert'])
 
-main()
+

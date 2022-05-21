@@ -33,7 +33,7 @@ class SVM_Model(object):
         ])
         return pipe_line
 
-def train():
+def train_model_conversation():
     try:
         df_train = pd.DataFrame(get_answer())
         logistic_model = LogisticRegression_Model()
@@ -42,11 +42,11 @@ def train():
         svm_model = SVM_Model()
         svm_clf = svm_model.clf.fit(df_train["Response"], df_train.Intent)
         pickle.dump(svm_clf, open("svm_answer_model.pkl", "wb"))
-        # os.system("pkill gunicorn")
-        # os.system("cd ~/chatbotapp")
-        # os.system("source chatbotenv/bin/activate")
-        # os.system("gunicorn --bind 0.0.0.0:8080 wsgi:app --daemon")
-        # os.system("Train model ok")
+        os.system("pkill gunicorn")
+        os.system("cd ~/chatbotapp")
+        os.system("source chatbotenv/bin/activate")
+        os.system("gunicorn --bind 0.0.0.0:8080 wsgi:app --daemon")
+        os.system("Train model ok")
         print('Success')
         return {"mess": "Train model thành công", "success":"true"}
     except error:
@@ -54,4 +54,4 @@ def train():
         return {"mess": "Lỗi khi train model", "success":"false"}
 
 if __name__ == "__main__":
-    train()
+    train_model_conversation()
