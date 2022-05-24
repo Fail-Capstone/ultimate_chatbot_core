@@ -45,7 +45,7 @@ def preprocess_sentence (user, expert):
 def conversration_predict(conversations):
     try:
         for data in conversations:
-            preprocess_sentence(data.user, data.expert)
+            preprocess_sentence(data['user'], data['expert'])
         return {"mess": "Done"}
     except Exception as e:
         return {"mess": e}
